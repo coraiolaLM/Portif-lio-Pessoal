@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- titulo da pagina  -->
+    <title>Portifólio Pessoal</title>
+    <!-- icone da pagina  -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/pato.png" />
+    <!-- css externo  -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- fonte exportada -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- CABEÇARIO  -->
+    <header class="header">
+        <div class="divcabeçario">
+          <h1 class="logo-text">Bruno Coraiola</h1>
+          <nav class="menu">
+            <ul>
+              <li><a href="#" class="textoancora">Início</a></li>
+              <li><a href="#Habilidades" class="textoancora">Habilidades</a></li>
+              <li><a href="#contato" class="textoancora">Contato</a></li>
+              <li><a href="#projetosancora" class="textoancora">Projetos</a></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
+
+    <!-- botão pra mudar tema -->
+    <button id="mudartema"><p>Mudar tema</p></button>
+    <div id="listaTemas" style="display: none;">
+      <ul>
+          <li><button class="temaBtn" data-tema="temaazul">Azul</button></li>
+          <li><button class="temaBtn" data-tema="temavermelho">Vermelho</button></li>
+          <li><button class="temaBtn" data-tema="temacinza">Cinza</button></li>
+          <li><button class="temaBtn" data-tema="temaverde">Verde</button></li>
+          <li><button class="temaBtn" data-tema="temanoturno">Cinza</button></li>
+
+      </ul>
+    </div>
+
+    <!-- Bio  -->
+  <section class="section1">
+      <div class="bio">
+        <h2 class="quemsou">Quem sou?</h2>
+        <p>
+          Sou Bruno Coraiola, um estudante de Engenharia de Software, 
+          atualmente cursando o 3° período, aos meus 19 anos de idade.
+          Nasci e cresci na cidade de Curitiba, Brasil. Meu interesse 
+          pela informática e pela evolução tecnológica começou cedo. 
+          Observando atentamente os avanços tecnológicos que aconteciam
+          ao meu redor, percebi que me sentia confortável ao pesquisar 
+          e me envolver na área e por isso decidi transformar minha 
+          paixão pela tecnologia em uma carreira sólida. No entanto,
+          embora minha trajetória acadêmica esteja em pleno andamento, 
+          ainda não tive a chance de me aventurar profissionalmente na 
+          área de informática. Estou determinado a continuar acompanhando
+          de perto a evolução da tecnologia e contribuindo de maneira 
+          significativa para o avanço da área de informática.
+        </p>
+        <br><br>
+        <div class="contatos">
+          <a href="https://www.linkedin.com/in/bruno-coraiola-702a06267/"target="_blank"><img src="img/linkedin.png" alt="LinkedIn"/></a>
+          
+          <a href="https://api.whatsapp.com/send?phone=41992563371"><img src="img/whatsapp.png" alt="whatsapp"/></a>
+          
+          <a href="https://github.com/coraiolaLM" target="_blank"><img src="img/github.png" alt="GitHub"/></a>
+          
+          <a href="https://www.instagram.com/bcoraiola/" target="_blank"><img src="img/instagram.png" alt="Instagram"/></a>
+        </div>
+      </div>
+      </div>
+      <div class="eu">
+        <img src="img/foto.jpeg" alt="Sua Imagem" id="foto" class="box" />
+  </section>
+
+    <!-- SECTION PROJETOS  -->
+  <section id="projetosancora" >
+    <h1 class="logo-text">PROJETOS</h1>
+    <div id="cardprojeto"></div>
+    <script>
+      const consultagit = () => {
+        return fetch('https://api.github.com/users/coraiolaLM/repos')
+          .then(response => {
+            if (!response.ok) {
+            alert('Erro ao consultar API, verifique a conexão')
+            return
+            }
+            return response.json()
+          })
+          .then(repos => {
+            repos.sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
+            criacardprojeto(repos)
+            //como a API gitbub não exporta foto para eu usar de fundo de card, ordenei os respositorios de 
+            //mais antigos pros mais novo, se precisar inserir mais, so ir no css na aba de Section Projetos
+          })
+          .catch(error => {
+            console.error('Erro ao processar a API:', error)
+          });
+      };
+      
+      function criacardprojeto(repositorio) {
+        const localizardivcardprojeto = document.getElementById('cardprojeto')
+      
+        repositorio.forEach((repo, index) => {
+          //criando objeto para cards projeto
+            const card = document.createElement('div')
+            card.classList.add('card')
+            //cria um filho dessa div classe titulocard com uma foto especifica e com o nome do repositorio
+            const tituloCard = document.createElement('div')
+            tituloCard.classList.add('titulocard')
+            tituloCard.classList.add(`img${index + 1}`)
+            tituloCard.innerHTML = `<span>${repo.name}</span>`
+            card.appendChild(tituloCard)
+            //cria outro filho pra div card, chamado content que cria uma aba de conteudo com as inf da api
+            const content = document.createElement('div')
+            content.classList.add('content')
+            content.innerHTML = `
+                <span class="title"><a href="${repo.html_url}" target="_blank">${repo.name}</a></span>
+                <p class="desc">${repo.description || 'Descrição não fornecida'}</p>
+            ` 
+            card.appendChild(content)
+            //cria a setinha
+            const arrow = document.createElement('div')
+            arrow.classList.add('arrow')
+            arrow.innerHTML = '<span>&#8673;</span>'
+            card.appendChild(arrow)
+            
+            localizardivcardprojeto.appendChild(card)
+        });
+      }
+      consultagit().then(data => {
+        criacardprojeto(data)
+      });
+    </script>
+  </section>
+
+    <!-- SECTION CONTATOS -->
+  <section id="contato">
+      <section><h1 class="logo-text">CONTATO</h1></section>
+      <div class="contato-container">
+        <div class="contato-item">
+          <h3>Email</h3>
+          <p>bru.coraiola@gmail.com</p>
+          <img src="img/gmail.png" alt="Ícone do Gmail" class="gmail">
+        </div>
+        <div class="contato-item">
+          <h3>Redes Sociais</h3>
+          <p> 
+            <a href="https://www.linkedin.com/in/bruno-coraiola-702a06267/" target="_blank"><img src="img/linkedin.png" alt="LinkedIn" class="iconcontato" /></a>
+            <a href="https://api.whatsapp.com/send?phone=41992563371"><img src="img/whatsapp.png" alt="WhatsApp" class="iconcontato"/></a>
+            <a href="https://github.com/coraiolaLM" target="_blank"><img src="img/github.png" alt="GitHub" class="iconcontato"/></a>
+            <a href="https://www.instagram.com/bcoraiola/" target="_blank"><img src="img/instagram.png" alt="Instagram" class="iconcontato"/></a>
+          </p>
+        </div>
+        <div class="contato-item">
+          <h3>Telefone / Whatsapp</h3>
+          <p>(41) 99256-3371</p>
+          <img src="img/telefone.png" alt="Ícone de Telefone" class="gmail">
+        </div>
+        <div class="contato-item">
+          <h3>Instituição de ensino</h3>
+          <p>UniCesumar</p>
+          <p>Engenharia de Software - 3° período</p>
+          <img src="img/abra-o-livro.png" alt="Ícone de Livro" class="gmail">
+        </div>
+      </div>
+  </section>
+
+    <!-- SECTIONS TECNOLOGIAS/HABILIDADES -->
+  <section id="Habilidades">
+      <section><h1 class="logo-text">HABILIDADES</h1></section>
+      <!-- tecnologia 1  -->
+      <div class="cardh">
+        <div class="tecnologia1"></div>
+        <div class="cardh-text">
+          <h2>HTML</h2>
+          <br>
+          <p>Linguagem de marcação utilizada para criar e estruturar páginas web.</p>
+        </div>
+        <div class="cardh-stats">
+            <div class="stat">
+              <div class="value">34<sup>anos</sup></div>
+              <div class="type">DE IDADE</div>
+            </div>
+              <div class="stat border">
+                <div class="value">6°<sup>mês</sup></div>
+                <div class="type">DE DOMÍNiO</div>
+              </div>
+            <div class="stat">
+              <br>
+              <div class="type">Nível</div>
+              <div class="value"><sup>Avançado</sup></div>
+            </div>
+          </div>
+      </div>
+
+      <!-- tecnologia 2 -->
+      <div class="cardh">
+        <div class="tecnologia2"></div>
+        <div class="cardh-text">
+          <h2>CSS</h2>
+          <br>
+          <p>Linguagem de estilo usada para controlar a apresentação visual de páginas web.</p>
+        </div>
+        <div class="cardh-stats">
+          <div class="stat">
+            <div class="value">30<sup>anos</sup></div>
+            <div class="type">DE IDADE</div>
+          </div>
+            <div class="stat border">
+              <div class="value">6°<sup>mês</sup></div>
+              <div class="type">DE DOMÍNiO</div>
+            </div>
+          <div class="stat">
+            <br>
+            <div class="type">Nível</div>
+            <div class="value"><sup>Avançado</sup></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- tecnologia 3 -->
+      <div class="cardh">
+        <div class="tecnologia3"></div>
+        <div class="cardh-text">
+          <h2>Java Script</h2>
+          <br>
+          <p>Linguagem de programação ultilizada para manipular elementos da página web e realizar interações dinâmicas.</p>
+        </div>
+        <div class="cardh-stats">
+          <div class="stat">
+            <div class="value">29<sup>anos</sup></div>
+            <div class="type">DE IDADE</div>
+          </div>
+            <div class="stat border">
+              <div class="value">2°<sup>mês</sup></div>
+              <div class="type">DE DOMÍNiO</div>
+            </div>
+          <div class="stat">
+            <br>
+            <div class="type">Nível</div>
+            <div class="value"><sup>Inicial</sup></div>
+          </div>
+        </div>
+      </div> 
+
+      <!-- tecnologia 4 -->
+      <div class="cardh">
+        <div class="tecnologia4"></div>
+        <div class="cardh-text">
+          <h2>C</h2>
+          <br>
+          <p>Linguagem de programação utilizada para criar algoritmos e desenvolver software de baixo nível.</p>
+        </div>
+        <div class="cardh-stats">
+          <div class="stat">
+            <div class="value">51<sup>anos</sup></div>
+            <div class="type">DE IDADE</div>
+          </div>
+            <div class="stat border">
+              <div class="value">6°<sup>mês</sup></div>
+              <div class="type">DE DOMÍNiO</div>
+            </div>
+          <div class="stat">
+            <br>
+            <div class="type">Nível</div>
+            <div class="value"><sup>Intermediário</sup></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- tecnologia 5 -->
+      <div class="cardh">
+        <div class="tecnologia5"></div>
+        <div class="cardh-text">
+          <h2>PHP</h2>
+          <br>
+          <p>Linguagem de programação utilizada para processar dados e gerar conteúdo dinâmico no servidor antes de ser enviado para o navegador do usuário.</p>
+        </div>
+        <div class="cardh-stats">
+            <div class="stat">
+              <div class="value">29<sup>anos</sup></div>
+              <div class="type">DE IDADE</div>
+            </div>
+              <div class="stat border">
+                <div class="value">2°<sup>mês</sup></div>
+                <div class="type">DE DOMÍNiO</div>
+              </div>
+            <div class="stat">
+              <br>
+              <div class="type">Nível</div>
+              <div class="value"><sup>Inicial</sup></div>
+            </div>
+        </div>
+      </div>
+      
+  </section>
+     
+    <!-- RODA PÉ -->
+  <footer>
+      <div class="divfooter">  
+          <div class="social">
+            <p>© 2024 CoraiolaLM.</p>
+          </div>
+        </div>
+  </footer>
+  
+    <script src="script.js" defer></script>
+
+  </body>
+</html>

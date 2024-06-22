@@ -1,0 +1,651 @@
+/* temas */
+:root {
+  --color-principal: #2f3d7e;
+  --cor-secundaria: #00ffff;
+  --cor-tercearia: #b0e0e6;
+  --estilo-background-1: -webkit-linear-gradient(135deg, #00ffff, #faeaeb);
+  --estilo-background-2: linear-gradient(#2f3d7e, #00ffff);
+  --estilo-background-3: linear-gradient(#00ffff, #2f3d7e);
+  --background-tecnologia: #b0e0e6;
+  --borda-tecnlogia: #090a49;
+  --borda-contato: #faeaeb;
+}
+:root.temavermelho {
+  --color-principal: #800020;
+  --cor-secundaria: #000000;
+  --cor-tercearia: #ff00445e;
+  --estilo-background-1: -webkit-linear-gradient(135deg, #ff00445e, #faeaeb);
+  --estilo-background-2: linear-gradient(#800020, #000000);
+  --estilo-background-3: linear-gradient(#000000, #800020);
+  --background-tecnologia: #ff00445e;
+  --borda-tecnlogia: #000000;
+  --borda-contato: #faeaeb;
+}
+:root.temacinza {
+  --color-principal: #6a8d92;
+  --cor-secundaria: #ff6b6b;
+  --cor-tercearia: #faf3dd;
+  --estilo-background-1: linear-gradient(135deg, #ffd6a5, #faeaeb);
+  --estilo-background-2: linear-gradient(#6a8d92, #ff6b6b);
+  --estilo-background-3: linear-gradient(#ff6b6b, #6a8d92);
+  --background-tecnologia: #faf3dd;
+  --borda-tecnlogia: #ff6b6b;
+  --borda-contato: #ff6b6b;
+}
+:root.temaverde {
+  --color-principal: #103900;
+  --cor-secundaria: #06ba63;
+  --cor-tercearia: #06ba63;
+  --estilo-background-1: linear-gradient(135deg, #06ba63, #faeaeb);
+  --estilo-background-2: linear-gradient(#103900, #06ba63);
+  --estilo-background-3: linear-gradient(#06ba63, #103900);
+  --background-tecnologia: #06ba63;
+  --borda-tecnlogia: #103900;
+  --borda-contato: #faeaeb;
+}
+:root.temanoturno {
+  --color-principal: #242424;
+  --cor-secundaria: #646464;
+  --cor-tercearia: #646464;
+  --estilo-background-1: linear-gradient(135deg, #faeaeb, #646464);
+  --estilo-background-2: linear-gradient(#242424, #646464);
+  --estilo-background-3: linear-gradient(#646464, #242424);
+  --background-tecnologia: #646464;
+  --borda-tecnlogia: #000000;
+  --borda-contato: #000000;
+}
+
+/* Formatação geral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Kanit", sans-serif;
+}
+
+
+/* Formatação De Cabeçario */
+.header {
+  height: auto;
+  box-sizing: border-box;
+  z-index: 999;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-principal);
+  padding: 10px 0;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-bottom: 3px solid #faeaeb;
+}
+.logo-text {
+  margin-right: 10px;
+  font-size: 30px;
+  background: var(--estilo-background-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.header .logo-text{
+  font-size: 1.5em;
+}
+.divcabeçario {
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.textoancora {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  color: #faeaeb;
+}
+@keyframes animaçãosublinhado {
+  0%,
+  100% {
+    text-decoration-color: var(--estilo-background-2);
+  }
+  50% {
+    text-decoration-color: var(--cor-secundaria);
+  }
+}
+.textoancora:hover {
+  font-size: 1.3em;
+  color: var(--cor-tercearia);
+  text-decoration: underline;
+  animation: animaçãosublinhado 4s infinite;
+}
+.menu ul li {
+  display: inline-block;
+  margin-left: 20px;
+}
+.menu ul li a {
+  color: #faeaeb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.menu ul li ase:hover {
+  color: var(--color-principal);
+}
+/* Fim De Formatação De Cabeçario */
+
+
+/* Formatação De Botão Alterar tema */
+#mudartema {
+  position: fixed;
+  top: 10%; 
+  right: 1%; 
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: var(--color-principal);
+  color: #faeaeb;
+  border: 2px solid #faeaeb;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 1001; 
+}
+
+#listaTemas {
+  border-radius: 10px;
+  display: none;
+  position: fixed;
+  top: 17%; 
+  right: 1%; 
+  background-color: var(--color-principal);
+  min-width: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1000; 
+}
+
+#listaTemas ul {
+  border-radius: 10px;
+  border: 2px solid #faeaeb;
+  list-style-type: none;
+  padding: 0;
+}
+
+#listaTemas ul li button {
+  color: #faeaeb;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  text-align: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* arrumando botão para dispositivos moveis */
+@media screen and (max-width: 390px){
+  #mudartema {
+    top: 90%; 
+    right: 1%;
+  }
+  #listaTemas {
+    top: 55%; 
+    right: 1%;
+  }
+}
+/* Fim De Formatação De Botão */
+
+
+/* Formatação De Sections */
+section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid var(--cor-secundaria);
+}
+section:last-of-type {
+  border-bottom: none;
+ 
+}
+section:first-of-type {
+  margin-top: -50px;
+}
+.section1 {
+  background-color: #faeaeb;
+  height: auto;
+  width: auto;
+}
+
+section:nth-of-type(2) {
+  background-color: var(--color-principal);
+  border-bottom: none;
+}
+section:nth-of-type(3) {
+  background-image: var(--estilo-background-2);
+  border-bottom: none;
+}
+section:nth-of-type(4) {
+  background-image: var(--estilo-background-3);
+  border-bottom: none;
+
+}
+/* Fim De Formatação De Section  */
+
+
+/* Formatação De Bio */
+.bio {
+  font-size: 1.1em;
+  line-height: 1.6;
+  text-align: justify;
+  max-width: 600px;
+  margin-top: 60px;
+  margin-bottom: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+@keyframes pulsarquemsou {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+.quemsou {
+  text-decoration: underline;
+  animation: pulsarquemsou 2s infinite;
+  display: inline-block;
+  color: var(--color-principal);
+}
+.contatos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 20px;
+}
+.contatos a {
+  margin: 0 5px;
+  transition: transform 0.3s ease;
+}
+.contatos img {
+  width: 30px;
+  height: auto;
+}
+.contatos a:hover {
+  transform: translateY(-5px);
+}
+.eu {
+  box-shadow: var(--cor-secundaria) 0px 5px 15px;
+  margin-top: -20px;
+  margin-left: 150px;
+  margin-right: 10px;
+  border: 3px solid var(--color-principal);
+  border-radius: 30%;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.eu img {
+  max-width: 100%;
+  max-height: 400px;
+  height: auto;
+  display: block;
+}
+/* optei por remover minha foto em dispositivos menores, para nao oucorrer uma poluição muito grande */
+@media screen and (max-width: 1074px){
+  .eu{
+    display: none;
+  }
+}
+/* Fim de Formatação de Bio*/
+
+
+/* Section Projetos */
+#projetosancora {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap; 
+  position: relative;
+}
+#projetosancora .logo-text{
+  margin-right: 10px;
+  font-size: 30px;
+  background: var(--estilo-background-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#cardprojeto {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  width: 100%; 
+}
+.card {
+  border-radius: 16px;
+  box-shadow: var(--cor-secundaria) 0px 5px 15px;
+  width: 300px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-image: var(--estilo-background-3);
+  transition: all 0.5s;
+  margin: 40px; 
+}
+.card:hover {
+  background-image: var(--estilo-background-3);
+}
+.card .titulocard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s;
+  z-index: 2;
+  position: relative;
+  opacity: 100;
+}
+/* Imagem de capa para cada card na area de projetos */
+.card .titulocard.img1 {
+  background-image: url("img/projeto1todolist.png"); 
+}
+.card .titulocard.img2 {
+  background-image: url("img/projeto2gestaodenotas.jpg"); 
+}
+.card .titulocard.img3 {
+  background-image: url("img/projeto3portifolio.jpg"); 
+}
+.card .titulocard.img4 {
+  background-image: url("img/projeto4consultacep.jpg"); 
+}
+.card .titulocard.img5 {
+  background-image: url("img/em-breve-glitch.gif"); 
+  }
+.card .titulocard.img6 {
+  background-image: url("img/em-breve-glitch.gif"); 
+  }
+
+.card .titulocard span {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 1000;
+  transition: all 0.5s;
+  color: var(--cor-tercearia);
+  text-shadow: 0px 5px 15px var(--cor-secundaria);
+}
+.card:hover .titulocard span {
+  font-size: 28px; 
+}
+
+.card .content {
+  padding: 0px 20px;
+  height: 0;
+  opacity: 0;
+  transition: all 0.5s;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  transform: translateY(30px);
+}
+
+.card:hover .content {
+  height: 200px;
+  padding: 20px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card .content .title {
+  font-size: 20px; 
+  font-weight: 600; 
+  cursor: pointer; 
+}
+.card .content .title a {
+  color: #faeaeb; 
+}
+.card .content .desc {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 400;
+  margin-top: 8px;
+  color: #faeaeb;
+  text-align: justify;
+}
+.card .arrow span {
+  font-weight: 700; 
+  color: var(--cor-tercearia); 
+  font-size: 30px; 
+}
+.card .arrow {
+  padding: 15px;
+  transform: rotate(-180deg);
+  transition: all 0.5s;
+}
+.card:hover .arrow {
+  transform: rotate(0); 
+}
+/* fim de formatação section projetos */
+
+
+/* Formatação de Contato */
+#contato {
+  background-color: var(--background-tecnologia);
+  padding: 30px 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap; 
+  position: relative;
+}
+
+.contato-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.contato-container :hover{
+  transform: scale(1.03);
+ 
+}
+
+.contato-item {
+  flex: 1 1 300px; /* Cada item terá largura de 300px, flexível */
+  background-color: var(--cor-tercearia);
+  padding: 30px;
+  border: 10px solid var(--borda-contato);
+  text-align: center;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+.contato-item h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.contato-item p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.gmail, .iconcontato {
+  max-width: 50px;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 10px;
+}
+.iconcontato {
+  transition: transform 0.3s ease;
+}
+.iconcontato:hover {
+  animation: rotateCoin 1.2s linear infinite;
+}
+@keyframes rotateCoin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Fim de Formatação de Contato */
+
+
+/* Section Habilidades */
+#Habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  position: relative;
+}
+#Habilidades .logo-text{
+  margin-right: 10px;
+  font-size: 30px;
+  background: var(--estilo-background-3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.cardh {
+  background-color: var(--background-tecnologia);
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: 200px 200px 80px;
+  grid-template-areas: "image" "text" "stats";
+  border-radius: 18px;
+  color: var(--borda-contato);
+  text-shadow: 0px 0px 5px var(--color-principal);
+  font-family: roboto;
+  text-align: center;
+  transition: 0.5s ease;
+  margin: 30px;
+  border: 4px solid var(--borda-tecnlogia);
+}
+/* formatando e aplicando imagens para cada tecnologia  */
+.tecnologia1 {
+  grid-area: image;
+  background: url("img/html-5.png") no-repeat center;
+  background-size: 50%;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+.tecnologia2 {
+  grid-area: image;
+  background: url("img/css-3.png") no-repeat center;
+  background-size: 50%;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+.tecnologia3 {
+  grid-area: image;
+  background: url("img/js.png") no-repeat center;
+  background-size: 50%;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+.tecnologia4 {
+  grid-area: image;
+  background: url("img/c.png") no-repeat center;
+  background-size: 50%;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+.tecnologia5 {
+  grid-area: image;
+  background: url("img/php.png") no-repeat center;
+  background-size: 50%;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+
+.cardh-text {
+  grid-area: text;
+  margin: 25px;
+}
+.cardh-text p {
+  font-size: 18px;
+  font-weight: 450;
+}
+.cardh-text h2 {
+  margin-top: 0px;
+  font-size: 28px;
+}
+.cardh-stats {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: #faeaeb;
+  border-top: 4px solid var(--borda-tecnlogia);
+}
+.cardh-stats .stat {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #000000;
+}
+.cardh-stats .border {
+  border-left: 1px solid var(--borda-tecnlogia);
+  border-right: 1px solid var(--borda-tecnlogia);
+}
+.cardh-stats .value {
+  font-size: 24px;
+  font-weight: 700;
+  text-shadow: 0px 0px 5px #faeaeb;
+}
+.cardh-stats .value sup {
+  font-size: 12px;
+  text-shadow: 0px 0px 5px #faeaeb;
+}
+.cardh-stats .type {
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 5px #faeaeb;
+}
+.cardh:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+}
+/* Fim de Habilidades */
+
+
+/* footer  */
+footer {
+  background-color: var(--color-principal);
+  color: var(--estilo-background-1);
+  padding: 5px 0;
+  border-top: 1px solid #faeaeb;
+}
+.divfooter {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+.social {
+  flex: 1;
+  margin: 0 10px;
+}
+footer p {
+  font-size: 14px;
+}
+/* Fim de footer  */
