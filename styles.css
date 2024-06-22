@@ -362,10 +362,10 @@ section:nth-of-type(4) {
   background-image: url("img/projeto2gestaodenotas.jpg"); 
 }
 .card .titulocard.img3 {
-  background-image: url("img/projeto3portifolio.jpg"); 
+   background-image: url("img/projeto4consultacep.jpg"); 
 }
 .card .titulocard.img4 {
-  background-image: url("img/projeto4consultacep.jpg"); 
+ background-image: url("img/projeto3portifolio.jpg"); 
 }
 .card .titulocard.img5 {
   background-image: url("img/em-breve-glitch.gif"); 
