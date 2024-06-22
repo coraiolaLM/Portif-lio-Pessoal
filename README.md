@@ -1,2 +1,2 @@
-# Portif-lio-Pessoal
+# Portifólio-Pessoal
 Portifolio pessoal de Bruno Coraiola.
