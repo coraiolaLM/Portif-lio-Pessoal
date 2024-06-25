@@ -16,18 +16,34 @@
 
     <!-- CABEÇARIO  -->
     <header class="header">
-        <div class="divcabeçario">
-          <h1 class="logo-text">Bruno Coraiola</h1>
-          <nav class="menu">
-            <ul>
-              <li><a href="#" class="textoancora">Início</a></li>
-              <li><a href="#Habilidades" class="textoancora">Habilidades</a></li>
-              <li><a href="#contato" class="textoancora">Contato</a></li>
-              <li><a href="#projetosancora" class="textoancora">Projetos</a></li>
-            </ul>
-          </nav>
+      <div class="divcabeçario">
+        <h1 class="logo-text">Bruno Coraiola</h1>
+        <nav class="menu">
+          <ul>
+            <li><a href="#" class="textoancora">Início</a></li>
+            <li><a href="#Habilidades" class="textoancora">Habilidades</a></li>
+            <li><a href="#contato" class="textoancora">Contato</a></li>
+            <li><a href="#projetosancora" class="textoancora">Projetos</a></li>
+          </ul>
+        </nav>
+        <!-- Hamburger para telas -768 -->
+        <div class="tham tham-e-squeeze tham-w-6" id="hamburger">
+          <div class="tham-box">
+            <div class="tham-inner"></div>
+          </div>
         </div>
+      </div> 
     </header>
+    <!-- conteudo o hambuger -->
+    <nav class="navbar" id="menu">
+      <ul>
+        <li><a href="#" class="textoancora">Início</a></li>
+        <li><a href="#Habilidades" class="textoancora">Habilidades</a></li>
+        <li><a href="#contato" class="textoancora">Contato</a></li>
+        <li><a href="#projetosancora" class="textoancora">Projetos</a></li>
+      </ul>
+    </nav>
+
 
     <!-- botão pra mudar tema -->
     <button id="mudartema"><p>Mudar tema</p></button>
@@ -35,10 +51,9 @@
       <ul>
           <li><button class="temaBtn" data-tema="temaazul">Azul</button></li>
           <li><button class="temaBtn" data-tema="temavermelho">Vermelho</button></li>
-          <li><button class="temaBtn" data-tema="temacinza">Cinza</button></li>
+          <li><button class="temaBtn" data-tema="temacinza">Por do Sol</button></li>
           <li><button class="temaBtn" data-tema="temaverde">Verde</button></li>
-          <li><button class="temaBtn" data-tema="temanoturno">Cinza</button></li>
-
+          <li><button class="temaBtn" data-tema="temanoturno">Preto</button></li>
       </ul>
     </div>
 
@@ -95,7 +110,7 @@
             repos.sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
             criacardprojeto(repos)
             //como a API gitbub não exporta foto para eu usar de fundo de card, ordenei os respositorios de 
-            //mais antigos pros mais novo, se precisar inserir mais, so ir no css na aba de Section Projetos
+            //mais antigos pros mais novo, se precisar inserir mais fotos, so ir no css na aba de Section Projetos
           })
           .catch(error => {
             console.error('Erro ao processar a API:', error)
@@ -145,7 +160,7 @@
         <div class="contato-item">
           <h3>Email</h3>
           <p>bru.coraiola@gmail.com</p>
-          <img src="img/gmail.png" alt="Ícone do Gmail" class="gmail">
+          <img src="img/gmail.png" alt="Ícone do Gmail" class="inconesdasectioncontato">
         </div>
         <div class="contato-item">
           <h3>Redes Sociais</h3>
@@ -159,13 +174,13 @@
         <div class="contato-item">
           <h3>Telefone / Whatsapp</h3>
           <p>(41) 99256-3371</p>
-          <img src="img/telefone.png" alt="Ícone de Telefone" class="gmail">
+          <img src="img/telefone.png" alt="Ícone de Telefone" class="inconesdasectioncontato">
         </div>
         <div class="contato-item">
           <h3>Instituição de ensino</h3>
           <p>UniCesumar</p>
           <p>Engenharia de Software - 3° período</p>
-          <img src="img/abra-o-livro.png" alt="Ícone de Livro" class="gmail">
+          <img src="img/abra-o-livro.png" alt="Ícone de Livro" class="inconesdasectioncontato">
         </div>
       </div>
   </section>

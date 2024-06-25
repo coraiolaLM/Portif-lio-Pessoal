@@ -23,7 +23,7 @@
 }
 :root.temacinza {
   --color-principal: #6a8d92;
-  --cor-secundaria: #ff6b6b;
+  --cor-secundaria: #fa5353;
   --cor-tercearia: #faf3dd;
   --estilo-background-1: linear-gradient(135deg, #ffd6a5, #faeaeb);
   --estilo-background-2: linear-gradient(#6a8d92, #ff6b6b);
@@ -52,7 +52,7 @@
   --estilo-background-3: linear-gradient(#646464, #242424);
   --background-tecnologia: #646464;
   --borda-tecnlogia: #000000;
-  --borda-contato: #000000;
+  --borda-contato: #ffffff;
 }
 
 /* Formatação geral */
@@ -65,7 +65,6 @@
 body {
   font-family: "Kanit", sans-serif;
 }
-
 
 /* Formatação De Cabeçario */
 .header {
@@ -88,7 +87,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.header .logo-text{
+.header .logo-text {
   font-size: 1.5em;
 }
 .divcabeçario {
@@ -98,7 +97,6 @@ body {
   display: flex;
   justify-content: space-between;
 }
-
 .textoancora {
   margin-bottom: 20px;
   font-size: 1.2em;
@@ -128,8 +126,108 @@ body {
   text-decoration: none;
   transition: color 0.3s ease;
 }
-.menu ul li ase:hover {
+.menu ul li a:hover {
   color: var(--color-principal);
+}
+
+/* camuflando o hamburger */
+.tham {
+  display: none;
+}
+.header #hamburger {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  #menu {
+    display: none;
+  }
+}
+
+/* Formatação do Hamburger*/
+@media (max-width: 768px) {
+  /* camuflando menu original*/
+  .menu {
+    display: none;
+  }
+  .header #hamburger {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 1000;
+  }
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: var(--color-principal);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .navbar ul li {
+    margin-bottom: 10px;
+  }
+  .navbar ul li a {
+    color: #faeaeb;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  .navbar.show {
+    display: block;
+    position: fixed;
+    z-index: 10000;
+    border: 3px solid #faeaeb;
+    border-radius: 10px;
+  }
+  .tham {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+  }
+  .tham-inner {
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: #faeaeb;
+    transition: all 0.3s ease-in-out;
+  }
+  .tham-inner::before,
+  .tham-inner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: #faeaeb;
+    transition: all 0.3s ease-in-out;
+  }
+  .tham-inner::before {
+    top: -8px;
+  }
+  .tham-inner::after {
+    bottom: -8px;
+  }
+  .tham-active .tham-inner {
+    transform: rotate(45deg);
+  }
+  .tham-active .tham-inner::before {
+    transform: rotate(-90deg);
+    top: 0;
+  }
+  .tham-active .tham-inner::after {
+    transform: rotate(-90deg);
+    bottom: 0;
+  }
 }
 /* Fim De Formatação De Cabeçario */
 
@@ -137,8 +235,8 @@ body {
 /* Formatação De Botão Alterar tema */
 #mudartema {
   position: fixed;
-  top: 10%; 
-  right: 1%; 
+  top: 10%;
+  right: 1%;
   padding: 10px 20px;
   font-size: 1em;
   background-color: var(--color-principal);
@@ -147,28 +245,25 @@ body {
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
-  z-index: 1001; 
+  z-index: 1001;
 }
-
 #listaTemas {
   border-radius: 10px;
   display: none;
   position: fixed;
-  top: 17%; 
-  right: 1%; 
+  top: 17%;
+  right: 1%;
   background-color: var(--color-principal);
   min-width: 10px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1000; 
+  z-index: 1000;
 }
-
 #listaTemas ul {
   border-radius: 10px;
   border: 2px solid #faeaeb;
   list-style-type: none;
   padding: 0;
 }
-
 #listaTemas ul li button {
   color: #faeaeb;
   padding: 12px 16px;
@@ -180,15 +275,14 @@ body {
   background: none;
   cursor: pointer;
 }
-
-/* arrumando botão para dispositivos moveis */
-@media screen and (max-width: 390px){
+/* mudando para telas -768*/
+@media screen and (max-width: 768px) {
   #mudartema {
-    top: 90%; 
+    top: 90%;
     right: 1%;
   }
   #listaTemas {
-    top: 55%; 
+    top: 62%;
     right: 1%;
   }
 }
@@ -206,29 +300,31 @@ section {
 }
 section:last-of-type {
   border-bottom: none;
- 
 }
 section:first-of-type {
   margin-top: -50px;
 }
+/* bio  */
 .section1 {
   background-color: #faeaeb;
   height: auto;
   width: auto;
 }
-
+/* projetos */
 section:nth-of-type(2) {
   background-color: var(--color-principal);
   border-bottom: none;
 }
+/* contato */
 section:nth-of-type(3) {
   background-image: var(--estilo-background-2);
   border-bottom: none;
+
 }
+/* Habilidades*/
 section:nth-of-type(4) {
   background-image: var(--estilo-background-3);
   border-bottom: none;
-
 }
 /* Fim De Formatação De Section  */
 
@@ -293,8 +389,8 @@ section:nth-of-type(4) {
   display: block;
 }
 /* optei por remover minha foto em dispositivos menores, para nao oucorrer uma poluição muito grande */
-@media screen and (max-width: 1074px){
-  .eu{
+@media screen and (max-width: 1074px) {
+  .eu {
     display: none;
   }
 }
@@ -307,10 +403,10 @@ section:nth-of-type(4) {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   position: relative;
 }
-#projetosancora .logo-text{
+#projetosancora .logo-text {
   margin-right: 10px;
   font-size: 30px;
   background: var(--estilo-background-1);
@@ -321,13 +417,13 @@ section:nth-of-type(4) {
   align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; 
-  width: 100%; 
+  justify-content: center;
+  width: 100%;
 }
 .card {
   border-radius: 16px;
   box-shadow: var(--cor-secundaria) 0px 5px 15px;
-  width: 300px; 
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -336,7 +432,7 @@ section:nth-of-type(4) {
   overflow: hidden;
   background-image: var(--estilo-background-3);
   transition: all 0.5s;
-  margin: 40px; 
+  margin: 40px;
 }
 .card:hover {
   background-image: var(--estilo-background-3);
@@ -354,25 +450,27 @@ section:nth-of-type(4) {
   position: relative;
   opacity: 100;
 }
+
 /* Imagem de capa para cada card na area de projetos */
 .card .titulocard.img1 {
-  background-image: url("img/projeto1todolist.png"); 
+  background-image: url("img/projeto1todolist.png");
 }
 .card .titulocard.img2 {
-  background-image: url("img/projeto2gestaodenotas.jpg"); 
+  background-image: url("img/projeto2gestaodenotas.jpg");
 }
 .card .titulocard.img3 {
-   background-image: url("img/projeto4consultacep.jpg"); 
+  background-image: url("img/projeto4consultacep.jpg");
 }
 .card .titulocard.img4 {
- background-image: url("img/projeto3portifolio.jpg"); 
+  background-image: url("img/projeto3portifolio.jpg");
 }
+/* Caso novo repositorio, adicionar foto do projeto aquii:  */
 .card .titulocard.img5 {
-  background-image: url("img/em-breve-glitch.gif"); 
-  }
+  background-image: url("img/em-breve-glitch.gif");
+}
 .card .titulocard.img6 {
-  background-image: url("img/em-breve-glitch.gif"); 
-  }
+  background-image: url("img/em-breve-glitch.gif");
+}
 
 .card .titulocard span {
   text-transform: uppercase;
@@ -383,9 +481,8 @@ section:nth-of-type(4) {
   text-shadow: 0px 5px 15px var(--cor-secundaria);
 }
 .card:hover .titulocard span {
-  font-size: 28px; 
+  font-size: 28px;
 }
-
 .card .content {
   padding: 0px 20px;
   height: 0;
@@ -396,21 +493,19 @@ section:nth-of-type(4) {
   overflow: hidden;
   transform: translateY(30px);
 }
-
 .card:hover .content {
   height: 200px;
   padding: 20px;
   opacity: 1;
   transform: translateY(0);
 }
-
 .card .content .title {
-  font-size: 20px; 
-  font-weight: 600; 
-  cursor: pointer; 
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
 }
 .card .content .title a {
-  color: #faeaeb; 
+  color: #faeaeb;
 }
 .card .content .desc {
   margin: 0;
@@ -421,9 +516,9 @@ section:nth-of-type(4) {
   text-align: justify;
 }
 .card .arrow span {
-  font-weight: 700; 
-  color: var(--cor-tercearia); 
-  font-size: 30px; 
+  font-weight: 700;
+  color: var(--cor-tercearia);
+  font-size: 30px;
 }
 .card .arrow {
   padding: 15px;
@@ -431,23 +526,21 @@ section:nth-of-type(4) {
   transition: all 0.5s;
 }
 .card:hover .arrow {
-  transform: rotate(0); 
+  transform: rotate(0);
 }
 /* fim de formatação section projetos */
-
 
 /* Formatação de Contato */
 #contato {
   background-color: var(--background-tecnologia);
-  padding: 30px 0; 
+  padding: 30px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   position: relative;
 }
-
 .contato-container {
   display: flex;
   flex-wrap: wrap;
@@ -456,11 +549,9 @@ section:nth-of-type(4) {
   max-width: 1200px;
   margin: 0 auto;
 }
-.contato-container :hover{
+.contato-container :hover {
   transform: scale(1.03);
- 
 }
-
 .contato-item {
   flex: 1 1 300px; /* Cada item terá largura de 300px, flexível */
   background-color: var(--cor-tercearia);
@@ -479,7 +570,8 @@ section:nth-of-type(4) {
   margin: 5px 0;
 }
 
-.gmail, .iconcontato {
+.inconesdasectioncontato,
+.iconcontato {
   max-width: 50px;
   height: auto;
   display: inline-block;
@@ -502,7 +594,6 @@ section:nth-of-type(4) {
 }
 /* Fim de Formatação de Contato */
 
-
 /* Section Habilidades */
 #Habilidades {
   display: flex;
@@ -512,7 +603,7 @@ section:nth-of-type(4) {
   padding: 100px;
   position: relative;
 }
-#Habilidades .logo-text{
+#Habilidades .logo-text {
   margin-right: 10px;
   font-size: 30px;
   background: var(--estilo-background-3);
@@ -625,7 +716,6 @@ section:nth-of-type(4) {
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
 }
 /* Fim de Habilidades */
-
 
 /* footer  */
 footer {
