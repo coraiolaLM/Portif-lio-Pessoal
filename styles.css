@@ -234,6 +234,7 @@ body {
 
 /* Formatação De Botão Alterar tema */
 #mudartema {
+  font-weight: 540;
   position: fixed;
   top: 10%;
   right: 1%;
