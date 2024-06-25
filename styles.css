@@ -108,11 +108,10 @@ body {
     text-decoration-color: var(--estilo-background-2);
   }
   50% {
-    text-decoration-color: var(--cor-secundaria);
+    text-decoration-color: var(--estilo-background-3);
   }
 }
 .textoancora:hover {
-  font-size: 1.3em;
   color: var(--cor-tercearia);
   text-decoration: underline;
   animation: animaçãosublinhado 4s infinite;
@@ -624,7 +623,8 @@ section:nth-of-type(4) {
   text-align: center;
   transition: 0.5s ease;
   margin: 30px;
-  border: 4px solid var(--borda-tecnlogia);
+  border: 5px solid var(--borda-tecnlogia);
+  z-index: 10;
 }
 /* formatando e aplicando imagens para cada tecnologia  */
 .tecnologia1 {
@@ -686,7 +686,7 @@ section:nth-of-type(4) {
   border-top: 4px solid var(--borda-tecnlogia);
 }
 .cardh-stats .stat {
-  padding: 10px;
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -694,8 +694,8 @@ section:nth-of-type(4) {
   color: #000000;
 }
 .cardh-stats .border {
-  border-left: 1px solid var(--borda-tecnlogia);
-  border-right: 1px solid var(--borda-tecnlogia);
+  border-left: 3px solid var(--borda-tecnlogia);
+  border-right: 3px solid var(--borda-tecnlogia);
 }
 .cardh-stats .value {
   font-size: 24px;
