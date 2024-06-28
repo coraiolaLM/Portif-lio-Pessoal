@@ -464,10 +464,10 @@ section:nth-of-type(4) {
 .card .titulocard.img4 {
   background-image: url("img/projeto3portifolio.jpg");
 }
-/* Caso novo repositorio, adicionar foto do projeto aquii:  */
 .card .titulocard.img5 {
-  background-image: url("img/em-breve-glitch.gif");
+  background-image: url("img/fsof.jpg");
 }
+/* Caso novo repositorio, adicionar foto do projeto aquii:  */
 .card .titulocard.img6 {
   background-image: url("img/em-breve-glitch.gif");
 }
