@@ -549,11 +549,8 @@ section:nth-of-type(4) {
   max-width: 1200px;
   margin: 0 auto;
 }
-.contato-container :hover {
-  transform: scale(1.03);
-}
 .contato-item {
-  flex: 1 1 300px; /* Cada item terá largura de 300px, flexível */
+  flex: 1 1 300px; 
   background-color: var(--cor-tercearia);
   padding: 30px;
   border: 10px solid var(--borda-contato);
