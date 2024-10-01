@@ -663,7 +663,7 @@ section:nth-of-type(4) {
   grid-area: image;
   background: url("img/python.png") no-repeat center;
   background-size: 50%;
-  border-top-left-radius: 40px;
+  border-top-left-radius: 18px;
   border-top-right-radius: 18px;
 }
 .tecnologia7 {
