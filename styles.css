@@ -494,7 +494,7 @@ section:nth-of-type(4) {
   transform: translateY(30px);
 }
 .card:hover .content {
-  height: 165px;
+  height: 105px;
   padding: 20px;
   opacity: 1;
   transform: translateY(0);
@@ -655,6 +655,27 @@ section:nth-of-type(4) {
 .tecnologia5 {
   grid-area: image;
   background: url("img/php.png") no-repeat center;
+  background-size: 50%;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+.tecnologia6 {
+  grid-area: image;
+  background: url("img/python.png") no-repeat center;
+  background-size: 50%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 18px;
+}
+.tecnologia7 {
+  grid-area: image;
+  background: url("img/java.png") no-repeat center;
+  background-size: 50%;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+.tecnologia8 {
+  grid-area: image;
+  background: url("img/servidor-sql.png") no-repeat center;
   background-size: 50%;
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
